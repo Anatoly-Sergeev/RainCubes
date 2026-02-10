@@ -753,7 +753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefabCube: {fileID: 4587315085718101468, guid: e68eb099c2467e846b46bdb659912bf3,
     type: 3}
-  _capacity: 30
+  _capacity: 50
 --- !u!1 &1833710212
 GameObject:
   m_ObjectHideFlags: 0
