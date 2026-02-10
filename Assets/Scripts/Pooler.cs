@@ -12,7 +12,7 @@ public class Pooler : MonoBehaviour
     public event Action<Cube> TakedFromPool;
     public event Action<Cube> ReturnedToPool;
 
-    public int ActiveItems => _pool.CountActive;
+    public int CountActiveItems => _pool.CountActive;
     public int SizePool => _capacity;
 
     private void Start()

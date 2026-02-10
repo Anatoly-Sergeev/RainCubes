@@ -33,7 +33,7 @@ public class Spawner : MonoBehaviour
 
     public bool CanSpawn()
     {
-        return _pooler.ActiveItems < _pooler.SizePool;
+        return _pooler.CountActiveItems < _pooler.SizePool;
     }
 
     private void OnTakeCube(Cube cube)
