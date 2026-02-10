@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Pooler _pooler;
+    [SerializeField] private Pool _pool;
     [SerializeField] private Vector3 _spawnZonePosition;
     [SerializeField] private Vector3 _spawnZoneScale;
 
@@ -11,14 +11,14 @@ public class Spawner : MonoBehaviour
 
     private void OnEnable()
     {
-        _pooler.TakedFromPool += OnTakeCube;
-        _pooler.ReturnedToPool += OnReturnedCube;
+        _pool.TakedFromPool += OnTakeCube;
+        _pool.ReturnedToPool += OnReturnedCube;
     }
 
     private void OnDisable()
     {
-        _pooler.TakedFromPool -= OnTakeCube;
-        _pooler.ReturnedToPool -= OnReturnedCube;
+        _pool.TakedFromPool -= OnTakeCube;
+        _pool.ReturnedToPool -= OnReturnedCube;
     }
 
     private void Start()
@@ -28,12 +28,12 @@ public class Spawner : MonoBehaviour
 
     public Cube SpawnCube()
     {
-        return _pooler.GetItem();
+        return _pool.GetItem();
     }
 
     public bool CanSpawn()
     {
-        return _pooler.CountActiveItems < _pooler.SizePool;
+        return _pool.CountActiveItems < _pool.SizePool;
     }
 
     private void OnTakeCube(Cube cube)
@@ -46,13 +46,13 @@ public class Spawner : MonoBehaviour
             renderer.material.color = _default;
         }
 
-        cube.SelfDestroying += _pooler.ReleaseItem;
+        cube.SelfDestroying += _pool.ReleaseItem;
     }
 
     private void OnReturnedCube(Cube cube)
     {
         cube.gameObject.SetActive(false);
-        cube.SelfDestroying -= _pooler.ReleaseItem;
+        cube.SelfDestroying -= _pool.ReleaseItem;
     }
 
     private Vector3 GetSpawnPosition()

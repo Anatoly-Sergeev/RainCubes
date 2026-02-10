@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Pooler : MonoBehaviour
+public class Pool : MonoBehaviour
 {
     [SerializeField] private Cube _prefabCube;
     [SerializeField] private int _capacity;
